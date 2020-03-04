@@ -13,41 +13,40 @@ import br.unitins.books.model.Usuario;
 
 @Named
 @ViewScoped
-public class UsuarioController implements Serializable{
+public class UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = -563227102506849534L;
 
-	//Pesquisar Cloneable
-	//Terminar os botoes
+	// Pesquisar Cloneable
+	// Terminar os botoes
 	private Usuario usuario;
 	private List<Usuario> listaUsuario;
-	
+
 	public void incluir() {
 		getListaUsuario().add(getUsuario());
 		limpar();
 	}
-	
+
 	public void limpar() {
-		usuario=null;
+		usuario = null;
 	}
-	
-	
+
 	public void excluir() {
 		listaUsuario.remove(getUsuario());
 		limpar();
 	}
-	
+
 	public void alterar() {
-		
+
 	}
-	
+
 	public void editar(Usuario usu) {
 		setUsuario(usu);
 	}
 
 	public Usuario getUsuario() {
-		if(usuario==null)
-			usuario=new Usuario();
+		if (usuario == null)
+			usuario = new Usuario();
 		return usuario;
 	}
 
@@ -56,9 +55,9 @@ public class UsuarioController implements Serializable{
 	}
 
 	public List<Usuario> getListaUsuario() {
-		if(listaUsuario==null)
-			listaUsuario=new ArrayList<Usuario>();
+		if (listaUsuario == null)
+			listaUsuario = new ArrayList<Usuario>();
 		return listaUsuario;
 	}
-	
+
 }

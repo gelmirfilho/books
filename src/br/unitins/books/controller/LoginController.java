@@ -25,4 +25,9 @@ public class LoginController {
 		this.senha = senha;
 	}
 	
+	public void entrar() {
+		if(getLogin()=="gelmir") {
+			
+		}
+	}
 }
