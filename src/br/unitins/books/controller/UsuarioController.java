@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import org.apache.jasper.tagplugins.jstl.core.Remove;
 
+import br.unitins.books.application.Util;
 import br.unitins.books.model.Usuario;
 
 @Named
@@ -23,12 +24,32 @@ public class UsuarioController implements Serializable {
 	private List<Usuario> listaUsuario;
 
 	public void incluir() {
+		//o trim elimina os espaços das extremidades, nao elimina do meio ex joao da silva
+		if(/*getUsuario().getNome().trim().equals("")*/
+				//verifica se tem espaço null
+				getUsuario().getNome().isBlank()) {
+			Util.addErrorMessage("Campo nome deve ser preenchido");
+			//o return ignora as outras verificações, finaliza o metodo
+			return;
+		}
+		getUsuario().setId(proximoId());
 		getListaUsuario().add(getUsuario());
 		limpar();
 	}
 
 	public void limpar() {
 		usuario = null;
+	}
+	
+	private int proximoId() {
+		int resultado=0;
+		for (Usuario usuario : listaUsuario) {
+			if(usuario.getId()>resultado) {
+				resultado=usuario.getId();
+			}
+		}
+		//quando o ++ vem antes da variavel, ele primeiro acrescenta mais 1 e dps executa a linha
+		return ++resultado;
 	}
 
 	//implementar o equals, para dizer se o id é igual, ele ta tratando do mesmo objeto
