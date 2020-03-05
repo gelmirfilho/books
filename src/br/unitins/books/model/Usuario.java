@@ -1,17 +1,8 @@
 package br.unitins.books.model;
 
-public class Usuario implements Cloneable {
+public class Usuario extends Entity<Usuario> {
 
-	private Integer id;
 	private String nome, login, senha, email;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -48,13 +39,32 @@ public class Usuario implements Cloneable {
 	//clone cria uma referencia para um objeto
 	//ele retorna somente um objeto inteiro
 	//ele deve ser tratado, pois retorna um objeto inteiro
-	//se alterar uma informacao no clone altera no objeto que foi clonado tb
-	public Object clone() {
+	//se alterar uma informacao no clone altera no objeto que foi clonado tb	
+	/*public Usuario getClone() {
 		try {
-			return super.clone();
-		}catch(CloneNotSupportedException e) {
-			System.out.println("Não foi possivel clonar");
-			return this;
+			return (Usuario) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}
+		return null;
+	}*/
+	
+	//override do equals para comparar o id
+	/*@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}*/
 }

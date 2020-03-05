@@ -31,17 +31,29 @@ public class UsuarioController implements Serializable {
 		usuario = null;
 	}
 
+	//implementar o equals, para dizer se o id é igual, ele ta tratando do mesmo objeto
+	//mesma referencia de memoria
 	public void excluir() {
+		//o remove pega o equals do usuario q a gente implementou para ver se o objeto é igual
 		listaUsuario.remove(getUsuario());
 		limpar();
 	}
 
 	public void alterar() {
-
+		//obtendo o index do objeto que queremos alterar na lista
+		int index = listaUsuario.indexOf(getUsuario());
+		
+		//atualizando os dados da lista com o usuario e o index dele
+		listaUsuario.set(index, getUsuario());
+		System.out.println(getUsuario().getNome());
+		limpar();
 	}
 
+	//ele cria um novo usuario com as informacoes antigas do usuario
+	//perfeito para editar, pois ele vai editar diretamente o clone dele
+	//com isso pode adicionar de novo
 	public void editar(Usuario usu) {
-		setUsuario(usu);
+		setUsuario(usu.getClone());
 	}
 
 	public Usuario getUsuario() {

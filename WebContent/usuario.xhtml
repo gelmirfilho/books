@@ -25,15 +25,21 @@
 			<h:inputText value="#{usuarioController.usuario.login}" />
 
 			<h:outputLabel value="Senha:" />
-			<h:inputText value="#{usuarioController.usuario.senha}" />
+			<h:inputSecret value="#{usuarioController.usuario.senha}" />
 
 		</h:panelGrid>
 		
-		<h:commandButton value="Incluir" actionListener="#{usuarioController.incluir}" />
+		<h:commandButton value="Incluir"
+		 	disabled="#{usuarioController.usuario.id != null}"
+		 	actionListener="#{usuarioController.incluir}" />
 		
-		<h:commandButton value="Alterar" actionListener="#{usuarioController.alterar}" />
+		<h:commandButton value="Alterar" 
+			disabled="#{usuarioController.usuario.id == null}"
+			actionListener="#{usuarioController.alterar}" />
 		
-		<h:commandButton value="Excluir" actionListener="#{usuarioController.excluir}" />
+		<h:commandButton value="Excluir" 
+			disabled="#{usuarioController.usuario.id == null}"
+			actionListener="#{usuarioController.excluir}" />
 		
 		<h:commandButton value="Limpar" actionListener="#{usuarioController.limpar}" />
 		
